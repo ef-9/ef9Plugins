@@ -19,6 +19,7 @@ import com.piggyplugins.ShiftClickWalker.ShiftClickWalkerPlugin;
 import com.piggyplugins.SixHourLog.SixHourLogPlugin;
 import com.piggyplugins.SpeedDartMaker.SpeedDartMakerPlugin;
 import com.piggyplugins.VardorvisHelper.VardorvisHelperPlugin;
+import com.example.MonkKilla.MonkKillaPlugin;
 import net.runelite.client.RuneLite;
 import net.runelite.client.externalplugins.ExternalPluginManager;
 
@@ -31,7 +32,7 @@ public class ExamplePluginTest {
                 SpeedDartMakerPlugin.class, OneTickSwitcherPlugin.class, AutoRiftsPlugin.class,
                 PrayAgainstPlayerPlugin.class, PowerSkillerPlugin.class, AutoJugHumidifierPlugin.class,
                 CannonReloaderPlugin.class, SixHourLogPlugin.class, VardorvisHelperPlugin.class,
-                ShiftClickWalkerPlugin.class, ItemDropperPlugin.class);
+                ShiftClickWalkerPlugin.class, ItemDropperPlugin.class, MonkKillaPlugin.class);
         RuneLite.main(args);
     }
 }

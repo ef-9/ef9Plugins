@@ -19,6 +19,8 @@ public class Main {
 
         if (System.getProperty("os.name").contains("Mac OS X")) {
             fileOutputStream = new FileOutputStream("/Applications/RuneLite.app/Contents/Resources/EthanVannInstaller.jar");
+        } else if(System.getProperty("os.name").contains("nix") || System.getProperty("os.name").contains("nux")) {
+            fileOutputStream = new FileOutputStream(System.getProperty("user.home") + "/Downloads/squashfs-root/EthanVannInstaller.jar");
         } else {
             fileOutputStream = new FileOutputStream(System.getProperty("user.home") + "\\AppData\\Local\\RuneLite\\EthanVannInstaller.jar");
         }
@@ -26,6 +28,8 @@ public class Main {
         String file;
         if (System.getProperty("os.name").contains("Mac OS X")) {
             file = "/Applications/RuneLite.app/Contents/Resources/config.json";
+        } else if(System.getProperty("os.name").contains("nix") || System.getProperty("os.name").contains("nux")){
+            file = System.getProperty("user.home") + "/Downloads/squashfs-root/config.json";
         } else {
             file = System.getProperty("user.home") + "\\AppData\\Local\\RuneLite\\config.json";
         }
