@@ -63,7 +63,6 @@ public class MonkKillaPlugin extends Plugin {
     private WorldArea MonksWorldArea = new WorldArea(MonksWorldPoint, 16, 16);
 
     private boolean onBreak = false;
-
     @Override
     protected void startUp() throws Exception {
         keyManager.registerKeyListener(toggle);
@@ -178,6 +177,10 @@ public class MonkKillaPlugin extends Plugin {
         }
 
         return State.WAITING;
+    }
+
+    private boolean isUsingStrengthPots(){
+        return config.strpot();
     }
 
     private boolean hasContinueWidget(){

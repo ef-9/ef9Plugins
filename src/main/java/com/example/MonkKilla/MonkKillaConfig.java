@@ -26,4 +26,14 @@ public interface MonkKillaConfig extends Config {
     default int heal() {
         return 0;
     }
+
+    @ConfigItem(
+            name = "Strength pot?",
+            keyName = "strpot",
+            description = "Set 0 to disable healing or it will heal at config HP",
+            position = 0
+    )
+    default boolean strpot() {
+        return false;
+    }
 }
