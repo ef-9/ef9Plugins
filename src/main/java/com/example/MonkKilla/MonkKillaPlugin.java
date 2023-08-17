@@ -1,13 +1,13 @@
 package com.example.MonkKilla;
 
-import com.example.EthanApiPlugin.Collections.NPCs;
-import com.example.EthanApiPlugin.Collections.Widgets;
-import com.example.EthanApiPlugin.EthanApiPlugin;
-import com.example.InteractionApi.NPCInteraction;
-import com.example.PacketUtils.PacketUtilsPlugin;
-import com.example.Packets.MousePackets;
-import com.example.Packets.MovementPackets;
-import com.example.Packets.WidgetPackets;
+import com.ethan.EthanApiPlugin.Collections.NPCs;
+import com.ethan.EthanApiPlugin.Collections.Widgets;
+import com.ethan.EthanApiPlugin.EthanApiPlugin;
+import com.ethan.InteractionApi.NPCInteraction;
+import com.ethan.PacketUtils.PacketUtilsPlugin;
+import com.ethan.Packets.MousePackets;
+import com.ethan.Packets.MovementPackets;
+import com.ethan.Packets.WidgetPackets;
 import com.piggyplugins.PiggyUtils.BreakHandler.ReflectBreakHandler;
 import net.runelite.api.*;
 import net.runelite.api.coords.WorldArea;
