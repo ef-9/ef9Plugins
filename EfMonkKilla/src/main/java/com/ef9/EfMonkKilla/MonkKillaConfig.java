@@ -36,4 +36,14 @@ public interface MonkKillaConfig extends Config {
     default boolean strpot() {
         return false;
     }
+
+    @ConfigItem(
+            name = "STFU",
+            keyName = "silent",
+            description = "Turn on for console spam",
+            position = 0
+    )
+    default boolean stfu() {
+        return true;
+    }
 }

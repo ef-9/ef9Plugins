@@ -1,11 +1,13 @@
 package com.ef9.EfMonkKilla;
 import com.example.EthanApiPlugin.Collections.NPCs;
 import com.example.EthanApiPlugin.Collections.Widgets;
+import com.example.EthanApiPlugin.Collections.query.NPCQuery;
 import com.example.EthanApiPlugin.EthanApiPlugin;
 import com.example.InteractionApi.NPCInteraction;
 import com.example.PacketUtils.PacketUtilsPlugin;
 import com.example.Packets.MousePackets;
 import com.example.Packets.MovementPackets;
+import com.example.Packets.NPCPackets;
 import com.example.Packets.WidgetPackets;
 import com.piggyplugins.PiggyUtils.BreakHandler.ReflectBreakHandler;
 import net.runelite.api.*;
@@ -23,6 +25,7 @@ import javax.inject.Inject;
 import com.google.inject.Provides;
 import net.runelite.client.util.HotkeyListener;
 
+import java.util.Arrays;
 import java.time.Instant;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
@@ -95,7 +98,9 @@ public class MonkKillaPlugin extends Plugin {
     }
 
     private void handleState() {
-        System.out.println(state.name());
+        if(!config.stfu()){
+            System.out.println(state.name());
+        }
         switch (state) {
             case RUNNING_MONKS:
                 runToMonks();
@@ -239,11 +244,30 @@ public class MonkKillaPlugin extends Plugin {
         });
     }
     private void attackMonk(){
-        List<NPC> MonksInArea = NPCs.search().notInteracting().withName("Monk").withinWorldArea(MonksWorldArea).result();
+    /*  List<NPC> MonksInArea = NPCs.search().notInteracting().withName("Monk").withinWorldArea(MonksWorldArea).result();
         if (!MonksInArea.isEmpty()) {
             NPCInteraction.interact(MonksInArea.get(0), "Attack");
             timeout = 5;
+        }*/
+        NPCQuery npc = NPCs.search().alive().walkable().filter(n -> n.getName() != null && targetNames().contains(n.getName())).withAction("Attack").filter(
+                n -> !n.isInteracting() || (n.isInteracting() && n.getInteracting() instanceof Player
+                        && n.getInteracting().equals(client.getLocalPlayer()))
+        );
+
+        NPC MonkNPC = npc.nearestToPlayer().orElse(null);
+
+        if (MonkNPC != null) {
+            if(!config.stfu()){
+                log.info("Should fight, found monk");
+            }
+            MousePackets.queueClickPacket();
+            NPCPackets.queueNPCAction(MonkNPC, "Attack");
+            timeout = 6;
         }
+    }
+
+    public List<String> targetNames() {
+        return Arrays.asList("Monk");
     }
 
     private void runToMonks(){
